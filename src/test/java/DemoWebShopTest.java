@@ -4,11 +4,14 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.is;
 
 public class DemoWebShopTest {
+    public String body = "product_attribute_5_7_1=1" +
+            "&addtocart_5.EnteredQuantity=1";
 
     @Test
     public void addProductToCart() {
         given()
                 .spec(Specs.request)
+                .body(body)
                 .when()
                 .post("/addproducttocart/details/5/1")
                 .then()
